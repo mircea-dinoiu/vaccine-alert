@@ -1,0 +1,11 @@
+{
+  "name": "vaccine-alert",
+  "version": "1.0.0",
+  "main": "cron.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.5.0"
+  }
+}

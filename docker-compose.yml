@@ -1,0 +1,10 @@
+services:
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./package.json:/vaccine-alert/package.json
+      - ./.env:/vaccine-alert/.env
+      - ./cron.js:/vaccine-alert/cron.js
+      - ./yarn.lock:/vaccine-alert/yarn.lock
