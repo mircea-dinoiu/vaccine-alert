@@ -38,20 +38,24 @@ const sendEmail = async (features) => {
 }
 
 const main = async () => {
-    console.log('---------------');
+    try {
+        console.log('---------------');
 
-    const r = await fetch(url);
-    console.log('Fetched', url);
+        const r = await fetch(url);
+        console.log('Fetched', url);
 
-    const json = await r.json();
+        const json = await r.json();
 
-    const {features} = json;
-    const filteredFeatures = features.filter(f => {
-        return f.properties.appointments_available && options.postalCodes.includes(f.properties.postal_code);
-    });
+        const {features} = json;
+        const filteredFeatures = features.filter(f => {
+            return f.properties.appointments_available && options.postalCodes.includes(f.properties.postal_code);
+        });
 
-    if (filteredFeatures.length) {
-        sendEmail(filteredFeatures.map(f => f.properties));
+        if (filteredFeatures.length) {
+            sendEmail(filteredFeatures.map(f => f.properties));
+        }
+    } catch (e) {
+        console.error(e);
     }
 
     setTimeout(main, 60 * 1000);
